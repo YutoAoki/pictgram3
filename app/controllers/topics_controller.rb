@@ -18,6 +18,20 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
+  def edit
+    # debugger
+    @topic = Topic.find_by(id: params[:id])
+  end
+
+  def update
+    if @topic = current_user.topics.update(topic_params)
+      redirect_to topics_path
+    else
+      render :edit
+    end
+
+  end
+
   private
   def topic_params
     params.require(:topic).permit(:image, :description)
