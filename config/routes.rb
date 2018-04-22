@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'topics/new'
+
   get 'sessions/new'
 
   resources 'users'
+  resources 'topics'
 
   get 'pages/index'
 
