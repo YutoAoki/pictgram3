@@ -1,22 +1,16 @@
 <div class="topic-index-wrapper">
   <div class="container">
-    <% @topics.each do |topic| %>
+    <% @favorite_topics.each do |topic| %>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="topic-index-single">
             <h2 class="topic-author">
-              User name: <%= topic.user.name %>
+              <%= topic.user.name %>
             </h2>
             <%= image_tag topic.image.url %>
-            <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-              <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
-            <% end %>
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <p class="topic-text">
-              <%= topic.description %><br>
-            <%= link_to "Edit", edit_topic_path(topic) %><br>
-            <%= link_to "Delete", topic_path(topic), method: :delete %>
-
+              <%= topic.description %>
             </p>
           </div>
         </div>

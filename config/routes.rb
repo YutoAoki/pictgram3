@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'topics/new'
 
   get 'sessions/new'
@@ -15,5 +16,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  post '/favorites', to: 'favorites#create'
+  get '/favorites', to: 'favorites#index'
 
 end

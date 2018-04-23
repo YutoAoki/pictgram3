@@ -25,11 +25,21 @@ class TopicsController < ApplicationController
 
   def update
     if @topic = current_user.topics.update(topic_params)
-      redirect_to topics_path
+      redirect_to topics_path, notice: '編集を完了しました。'
     else
       render :edit
     end
+  end
 
+
+  def destroy
+    @topic = Topic.find_by(id: params[:id])
+    if @topic.delete
+    redirect_to topics_path
+    else
+    render topics_path
+
+    end
   end
 
   private
