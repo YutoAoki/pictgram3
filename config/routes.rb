@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
+
   get 'topics/new'
 
   get 'sessions/new'
 
   resources 'users'
   resources 'topics'
+  resources 'comments'
 
   get 'pages/index'
 

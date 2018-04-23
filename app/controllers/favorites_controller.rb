@@ -4,6 +4,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    # debugger
     favorite = Favorite.new
     favorite.user_id = current_user.id
     favorite.topic_id = params[:topic_id]
