@@ -11,11 +11,19 @@
             <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
               <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
             <% end %>
-            <%= link_to new_comment_path(topic_id: topic.id) do %>
+            <%= link_to new_comment_path(topic_id: topic.id), method: :get do %>
+
+            <!-- topic_id: topic.id -->
               <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% end %>
             <p class="topic-text">
-              <%= topic.description %><br>
+            <%= topic.description %><br>
+
+            <h3>コメント</h3>
+            <% topic.comments.each do |comment| %>
+              <p><%= comment.comment_text %></p>
+            <% end %>
+
             <%= link_to "Edit", edit_topic_path(topic) %><br>
             <%= link_to "Delete", topic_path(topic), method: :delete %>
 

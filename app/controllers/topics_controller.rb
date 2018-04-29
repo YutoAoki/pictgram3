@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+    # debugger
   end
 
   def edit
@@ -24,7 +25,9 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if @topic = current_user.topics.update(topic_params)
+    @topic = Topic.find_by(id: params[:id])
+    # debugger
+    if @topic.update(topic_params)   #= current_user.topics.update(topic_params)
       redirect_to topics_path, notice: '編集を完了しました。'
     else
       render :edit
