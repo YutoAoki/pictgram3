@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def new
     # debugger
+    
     @comment = Comment.new
 
   end
@@ -8,11 +9,12 @@ class CommentsController < ApplicationController
 
   def create
     # debugger
-    @topic = Topic.find_by(id: params[:id])
-    debugger
+    # @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.find_by(id: params[:topic_id])
+    # debugger
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.topic_id = @topic.id
+    # @comment.topic_id = @topic.id
 
     # debugger  user_id: current_user.id, , topic_id: params[:topic_id]
     if @comment.save
